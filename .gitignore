@@ -3,9 +3,6 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# Dependenices
-./Dependenices
-
 # User-specific files
 *.rsuser
 *.suo
@@ -364,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/Dependencies/SFML-2.6.1
