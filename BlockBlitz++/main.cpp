@@ -2,32 +2,58 @@
 
 #include <string>
 
+#include "constants.h"
+
+using namespace std::literals;
+
+
+// The main function for the program
 int main()
 {
-    // Request a 24-bits depth buffer when creating the window
-    sf::ContextSettings contextSettings;
-    contextSettings.depthBits = 24;
+    // Create the game's window using an object of class RenderWindow
+    // The constructor takes an SFML 2D vector with the window dimensions
+    // and an std::string with the window title
+    // The SFML code is in the sf namespace
 
-    // Create the main window
-    sf::Window window(sf::VideoMode(640, 480), "SFML window", sf::Style::Default, contextSettings);
+    sf::RenderWindow game_window{ {constants::window_width, constants::window_height}, "BlockBlitz++"s };
 
-    // Make it the active window for OpenGL calls
-    window.setActive();
+    // Limit the framerate
+    // This allows other processes to run and reduces power consumption
+    game_window.setFramerateLimit(constants::framerate_limit);
 
-    // Program never exits
-    while (window.isOpen())
+    // Game loop
+    // Clear the screen
+    // Check for new events
+    // Calculate the updated graphics
+    // Display the updated graphics
+    while (game_window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // Close window: exit
-            if (event.type == sf::Event::Closed)
-                window.close();
+        // Clear the screen
+        game_window.clear(sf::Color::Black);
 
-            // Escape key: exit
-            if ((event.type == sf::Event::KeyPressed) && (event.key.code == sf::Keyboard::Escape))
-                window.close();
+        // Check for any event since the last loop iteration
+        sf::Event event;
+
+        // If the user pressed "Escape", or clicked on "Close", we close the window
+        // This will terminate the program
+        while (game_window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                game_window.close();
+            }
         }
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+        {
+            game_window.close();
+        }
+
+        // Calculate the updated graphics
+        // Will be implemented in the future
+
+        // Display the updated graphics
+        game_window.display();
     }
 
 	return 0;
