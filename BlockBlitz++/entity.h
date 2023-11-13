@@ -22,3 +22,15 @@ public:
 	virtual void draw(sf::RenderWindow& rw) = 0;
 };
 
+
+// Abstract base class to represent graphical entities which can move around the screen
+class moving_entity :
+	public entity
+{
+protected:
+	// SFML vector to store the object's velocity
+	// This is the distance the ball moves between screen updates
+	sf::Vector2f velocity;
+
+};
+
