@@ -2,8 +2,9 @@
 
 #include <string>
 
-#include "constants.h"
 #include "background.h"
+#include "ball.h"
+#include "constants.h"
 
 using namespace std::literals;
 
@@ -12,7 +13,10 @@ using namespace std::literals;
 int main()
 {
     // Create the background object
-    background bg{ 0.0f, 0.0f };
+    background the_background{ 0.0f, 0.0f };
+
+    // Create a ball object in the middle of the screen
+    ball the_ball{ constants::window_width / 2.0f, constants::window_height / 2.0f };
 
     // Create the game's window using an object of class RenderWindow
     // The constructor takes an SFML 2D vector with the window dimensions
@@ -53,10 +57,12 @@ int main()
         }
 
         // Calculate the updated graphics
-        bg.update();
+        the_background.update();
+        the_ball.update();
 
         // Draw the graphics to the window's buffer
-        bg.draw(game_window);
+        the_background.draw(game_window);
+        the_ball.draw(game_window);
 
         // Display the updated graphics
         game_window.display();
