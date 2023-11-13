@@ -3,6 +3,7 @@
 #include <string>
 
 #include "constants.h"
+#include "background.h"
 
 using namespace std::literals;
 
@@ -10,11 +11,13 @@ using namespace std::literals;
 // The main function for the program
 int main()
 {
+    // Create the background object
+    background bg{ 0.0f, 0.0f };
+
     // Create the game's window using an object of class RenderWindow
     // The constructor takes an SFML 2D vector with the window dimensions
     // and an std::string with the window title
     // The SFML code is in the sf namespace
-
     sf::RenderWindow game_window{ {constants::window_width, constants::window_height}, "BlockBlitz++"s };
 
     // Limit the framerate
@@ -50,7 +53,10 @@ int main()
         }
 
         // Calculate the updated graphics
-        // Will be implemented in the future
+        bg.update();
+
+        // Draw the graphics to the window's buffer
+        bg.draw(game_window);
 
         // Display the updated graphics
         game_window.display();
