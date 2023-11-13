@@ -20,6 +20,19 @@ public:
 
 	// The draw member function will cause the entity to be displayed on the window
 	virtual void draw(sf::RenderWindow& rw) = 0;
+
+	// Getter function for the sprite's bounding box
+	sf::FloatRect get_bounding_box() const noexcept;
+
+	// Getter function for the sprite's center coordinates
+	sf::Vector2f get_center() const noexcept;
+
+	// Getter functions for the sprite's position
+	float x() const noexcept;
+	float y() const noexcept;
+
+	// Virtual d'tor
+	virtual ~entity() {};
 };
 
 

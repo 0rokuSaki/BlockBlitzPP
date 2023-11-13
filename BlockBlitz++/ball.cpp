@@ -19,6 +19,17 @@ void ball::update()
 {
 	// Move the position of the ball
 	this->sprite.move(velocity);
+
+	// Check if the ball moved off the side of the window
+	// If so, change the sign of the appropriate velocity
+	if (x() < 0 or x() > constants::window_width)
+	{
+		this->velocity.x *= -1;
+	}
+	if (y() < 0 or y() > constants::window_height)
+	{
+		this->velocity.y *= -1;
+	}
 }
 
 
