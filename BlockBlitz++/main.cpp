@@ -4,6 +4,7 @@
 
 #include "background.h"
 #include "ball.h"
+#include "paddle.h"
 #include "constants.h"
 
 using namespace std::literals;
@@ -17,6 +18,10 @@ int main()
 
     // Create a ball object in the middle of the screen
     ball the_ball{ constants::window_width / 2.0f, constants::window_height / 2.0f };
+
+    // Create a paddle object in the bottom-middle of the screen
+    paddle the_paddle{ (constants::window_width / 2.0f) - (constants::paddle_width / 2.0f),
+                   (constants::window_height) - constants::paddle_height };
 
     // Create the game's window using an object of class RenderWindow
     // The constructor takes an SFML 2D vector with the window dimensions
@@ -59,10 +64,12 @@ int main()
         // Calculate the updated graphics
         the_background.update();
         the_ball.update();
+        the_paddle.update();
 
         // Draw the graphics to the window's buffer
         the_background.draw(game_window);
         the_ball.draw(game_window);
+        the_paddle.draw(game_window);
 
         // Display the updated graphics
         game_window.display();
