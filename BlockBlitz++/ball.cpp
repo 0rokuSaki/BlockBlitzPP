@@ -38,3 +38,21 @@ void ball::draw(sf::RenderWindow& rw)
 	// Ask the window to draw the sprite for us
 	rw.draw(this->sprite);
 }
+
+
+void ball::move_up() noexcept
+{
+	this->velocity.y = -constants::ball_speed;
+}
+
+
+void ball::move_left() noexcept
+{
+	this->velocity.x = -constants::ball_speed;
+}
+
+
+void ball::move_right() noexcept
+{
+	this->velocity.x = constants::ball_speed;
+}

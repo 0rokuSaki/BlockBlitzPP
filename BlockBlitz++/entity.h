@@ -45,5 +45,11 @@ protected:
 	// This is the distance the ball moves between screen updates
 	sf::Vector2f velocity;
 
+
+public:
+	// Helper functions to change the sprite's directions
+	virtual void move_up() noexcept = 0;
+	virtual void move_left() noexcept = 0;
+	virtual void move_right() noexcept = 0;
 };
 

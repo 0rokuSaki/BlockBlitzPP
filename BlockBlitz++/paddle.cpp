@@ -19,12 +19,12 @@ void paddle::update()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&
 		this->x() < (constants::window_width - constants::paddle_width))
 	{
-		this->velocity.x = constants::paddle_speed;
+		this->move_right();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) &&
 		     this->x() > 0)
 	{
-		this->velocity.x = -constants::paddle_speed;
+		this->move_left();
 	}
 
 	// Move the position of the paddle
@@ -39,4 +39,22 @@ void paddle::draw(sf::RenderWindow& rw)
 {
 	// Ask the window to draw the sprite for us
 	rw.draw(this->sprite);
+}
+
+
+void paddle::move_up() noexcept
+{
+	// Empty
+}
+
+
+void paddle::move_left() noexcept
+{
+	this->velocity.x = -constants::paddle_speed;
+}
+
+
+void paddle::move_right() noexcept
+{
+	this->velocity.x = constants::paddle_speed;
 }
