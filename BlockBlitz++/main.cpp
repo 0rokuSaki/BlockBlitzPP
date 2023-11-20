@@ -1,9 +1,11 @@
 #include <SFML/Graphics.hpp>
 
 #include <string>
+#include <vector>
 
 #include "background.h"
 #include "ball.h"
+#include "brick.h"
 #include "paddle.h"
 #include "constants.h"
 #include "interactions.h"
@@ -23,6 +25,23 @@ int main()
     // Create a paddle object in the bottom-middle of the screen
     paddle the_paddle{ (constants::window_width / 2.0f) - (constants::paddle_width / 2.0f),
                    (constants::window_height) - constants::paddle_height };
+
+    // Create the grid of bricks 
+    // We will use an std::vector to store them
+    std::vector<brick> bricks;
+
+    for (int i = 0; i < constants::brick_columns; ++i)
+    {
+        for (int j = 0; j < constants::brick_rows; ++j)
+        {
+            // Calculate the brick's position
+            auto x = constants::brick_offset + (i + 1) * constants::brick_width;
+            auto y = (j + 1) * constants::brick_height;
+
+            // Create the brick object
+            bricks.emplace_back(x, y);
+        }
+    }
 
     // Create the game's window using an object of class RenderWindow
     // The constructor takes an SFML 2D vector with the window dimensions
@@ -66,12 +85,23 @@ int main()
         the_background.update();
         the_ball.update();
         the_paddle.update();
+
+        for (auto& b : bricks)
+        {
+            b.update();
+        }
+
         handle_collision(the_ball, the_paddle);
 
         // Draw the graphics to the window's buffer
         the_background.draw(game_window);
         the_ball.draw(game_window);
         the_paddle.draw(game_window);
+
+        for (auto b : bricks)
+        {
+            b.draw(game_window);
+        }
 
         // Display the updated graphics
         game_window.display();
