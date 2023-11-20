@@ -133,6 +133,7 @@
     <ClCompile Include="background.cpp" />
     <ClCompile Include="ball.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="interactions.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="paddle.cpp" />
   </ItemGroup>
@@ -141,6 +142,7 @@
     <ClInclude Include="ball.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="interactions.h" />
     <ClInclude Include="paddle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

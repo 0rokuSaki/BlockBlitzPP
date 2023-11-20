@@ -6,6 +6,7 @@
 #include "ball.h"
 #include "paddle.h"
 #include "constants.h"
+#include "interactions.h"
 
 using namespace std::literals;
 
@@ -65,6 +66,7 @@ int main()
         the_background.update();
         the_ball.update();
         the_paddle.update();
+        handle_collision(the_ball, the_paddle);
 
         // Draw the graphics to the window's buffer
         the_background.draw(game_window);
