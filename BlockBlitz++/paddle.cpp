@@ -16,8 +16,22 @@ paddle::paddle(float x, float y)
 
 void paddle::update()
 {
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&
+		this->x() < (constants::window_width - constants::paddle_width))
+	{
+		this->velocity.x = constants::paddle_speed;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) &&
+		     this->x() > 0)
+	{
+		this->velocity.x = -constants::paddle_speed;
+	}
+
 	// Move the position of the paddle
 	this->sprite.move(velocity);
+
+	// Reset velocity
+	this->velocity.x = 0.0f;
 }
 
 
