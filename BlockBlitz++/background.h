@@ -11,7 +11,7 @@ class background :
     public entity
 {
 private:
-    sf::Texture texture;
+    static sf::Texture texture;
 
 public:
     // Interface of the class

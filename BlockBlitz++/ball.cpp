@@ -1,6 +1,9 @@
 #include "ball.h"
 
 
+sf::Texture ball::texture;
+
+
 ball::ball(float x, float y)
 {
 	// Load the texture

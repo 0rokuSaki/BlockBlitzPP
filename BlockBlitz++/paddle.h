@@ -9,7 +9,7 @@ class paddle :
 	public moving_entity
 {
 private:
-	sf::Texture texture;
+	static sf::Texture texture;
 
 public:
     // Interface of the class

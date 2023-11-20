@@ -1,6 +1,9 @@
 #include "paddle.h"
 
 
+sf::Texture paddle::texture;
+
+
 paddle::paddle(float x, float y)
 {
 	// Load the texture

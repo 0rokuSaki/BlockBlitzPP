@@ -1,6 +1,9 @@
 #include "background.h"
 
 
+sf::Texture background::texture;
+
+
 background::background(float x, float y) :
 	entity()
 {
