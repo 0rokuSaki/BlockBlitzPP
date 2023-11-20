@@ -14,6 +14,10 @@ ball::ball(float x, float y)
 	// Use (x, y) for the initial position of the ball
 	this->sprite.setPosition(x, y);
 	this->velocity = { constants::ball_speed, constants::ball_speed };
+
+	// By default, operations are relative to the sprite's top left corner
+	// Make them relative to the sprite's center
+	this->sprite.setOrigin(get_center());
 }
 
 
@@ -46,6 +50,12 @@ void ball::draw(sf::RenderWindow& rw)
 void ball::move_up() noexcept
 {
 	this->velocity.y = -constants::ball_speed;
+}
+
+
+void ball::move_down() noexcept
+{
+	this->velocity.y = constants::ball_speed;
 }
 
 

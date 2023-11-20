@@ -14,18 +14,20 @@ paddle::paddle(float x, float y)
 	// Use (x, y) for the initial position of the ball
 	this->sprite.setPosition(x, y);
 	this->velocity = { 0.0f, 0.0f };
+
+	// By default, operations are relative to the sprite's top left corner
+	// Make them relative to the sprite's center
+	this->sprite.setOrigin(get_center());
 }
 
 
 void paddle::update()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) &&
-		this->x() < (constants::window_width - constants::paddle_width))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) && this->x() < constants::window_width)
 	{
 		this->move_right();
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) &&
-		     this->x() > 0)
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) && this->x() > 0)
 	{
 		this->move_left();
 	}
@@ -46,6 +48,11 @@ void paddle::draw(sf::RenderWindow& rw)
 
 
 void paddle::move_up() noexcept
+{
+	// Empty
+}
+
+void paddle::move_down() noexcept
 {
 	// Empty
 }

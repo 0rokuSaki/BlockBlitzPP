@@ -21,8 +21,7 @@ void handle_collision(ball& b, paddle& p)
 		// Make the new direction depend on where the collision occurs on the paddle
 		// If the collision is on the left of the paddle, make the ball bounce to the left
 		// Otherwise, make the ball bounce to the right
-		auto paddle_center_x = p.x() + constants::paddle_width / 2.0f;
-		if (b.x() < paddle_center_x)
+		if (b.x() <= p.x())
 		{
 			b.move_left();
 		}

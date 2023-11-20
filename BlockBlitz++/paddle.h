@@ -26,6 +26,7 @@ public:
     void update() override;
     void draw(sf::RenderWindow& rw) override;
     void move_up() noexcept;
+    void move_down() noexcept;
     void move_left() noexcept;
     void move_right() noexcept;
 };
