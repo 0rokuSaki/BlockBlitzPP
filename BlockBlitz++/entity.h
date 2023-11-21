@@ -10,6 +10,8 @@ class entity
 protected:
 	sf::Sprite sprite;
 
+	// Boolean member tracks the entity's status
+	bool destroyed{ false };
 
 public:
 	// Pure virtual functions
@@ -31,6 +33,16 @@ public:
 	float x() const noexcept;
 	float y() const noexcept;
 
+	// Helper functions to get the edges of the sprite
+	float left() const noexcept;
+	float right() const noexcept;
+	float top() const noexcept;
+	float bottom() const noexcept;
+
+	// Helper functions for the state of the entity
+	void destroy() noexcept;
+	bool is_destroyed() const noexcept;
+
 	// Virtual d'tor
 	virtual ~entity() {};
 };
@@ -49,6 +61,7 @@ protected:
 public:
 	// Helper functions to change the sprite's directions
 	virtual void move_up() noexcept = 0;
+	virtual void move_down() noexcept = 0;
 	virtual void move_left() noexcept = 0;
 	virtual void move_right() noexcept = 0;
 };
