@@ -16,11 +16,18 @@ private:
 	// Instead of embedding every entity in the game class, use an entity_manager
 	entity_manager manager;
 
+	// Use SFML text and font to communicate with the player
+	sf::Font verdana;
+	sf::Text text_state, text_lives;
+
 	// Enum with allowd values for game state
-	enum class game_state { paused, running };
+	enum class game_state { paused, game_over, running, player_won };
 
 	// Member to store the current state of the game
 	game_state state{ game_state::running };
+
+	// How many lives does the player have left?
+	int lives{ constants::player_lives };
 
 public:
 	// Constructor
