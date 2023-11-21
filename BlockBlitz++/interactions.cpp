@@ -40,8 +40,14 @@ void handle_collision(ball& b, brick& p)
 {
 	if (is_interacting(b, p))
 	{
-		// The brick is destroyed
-		p.destroy();
+		// Update the brick's strength
+		p.weaken();
+
+		// The brick is destroyed if its too weak
+		if (p.is_too_weak())
+		{
+			p.destroy();
+		}
 
 		// Make the new direction depend on where the collision occures on the brick
 		// If the ball collides on the side of the brick, make the ball bounce to the side
