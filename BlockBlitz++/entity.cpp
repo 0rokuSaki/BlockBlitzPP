@@ -52,3 +52,15 @@ float entity::bottom() const noexcept
 	auto box = this->get_bounding_box();
 	return this->y() + box.height / 2.0f;
 }
+
+
+void entity::destroy() noexcept
+{
+	this->destroyed = true;
+}
+
+
+bool entity::is_destroyed() const noexcept
+{
+	return this->destroyed;
+}

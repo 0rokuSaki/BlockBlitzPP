@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -92,6 +93,23 @@ int main()
         }
 
         handle_collision(the_ball, the_paddle);
+
+        // Check every brick for a collision with the ball
+        for (auto& b : bricks)
+        {
+            handle_collision(the_ball, b);
+        }
+
+        // Erase any destroyed bricks from the grid
+
+        // remove_if moves all elements to the back for which the conditional is true
+        // It returns an iterator to the first moved element
+        // We then call erase with this iterator as argument
+        // This will erase every element following this iterator
+        auto it = std::remove_if(std::begin(bricks), std::end(bricks),
+            [](const brick& b) { return b.is_destroyed(); });
+
+        bricks.erase(it, std::end(bricks));
 
         // Draw the graphics to the window's buffer
         the_background.draw(game_window);
