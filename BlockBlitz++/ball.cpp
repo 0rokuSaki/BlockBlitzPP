@@ -33,9 +33,13 @@ void ball::update()
 	{
 		this->velocity.x *= -1;
 	}
-	if (y() < 0 or y() > constants::window_height)
+	if (y() < 0)
 	{
 		this->velocity.y *= -1;
+	}
+	if (y() > constants::window_height)
+	{
+		destroy();
 	}
 }
 
