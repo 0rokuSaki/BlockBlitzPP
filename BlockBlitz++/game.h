@@ -1,11 +1,7 @@
 #pragma once
 
-#include "background.h"
-#include "ball.h"
-#include "brick.h"
 #include "constants.h"
-#include "paddle.h"
-
+#include "entity_manager.h"
 
 class game
 {
@@ -17,19 +13,8 @@ private:
 	sf::RenderWindow game_window{ { constants::window_width, constants::window_height },
 		"BlockBlitz++" };
 
-	// Create the background object
-	background the_background{ 0.0f, 0.0f };
-
-	// Create a ball object in the middle of the screen
-	ball the_ball{ constants::window_width / 2.0f, constants::window_height / 2.0f };
-
-	// Create a paddle object in the bottom-middle of the screen
-	paddle the_paddle{ (constants::window_width / 2.0f) - (constants::paddle_width / 2.0f),
-				   (constants::window_height)-constants::paddle_height };
-
-	// Create the grid of bricks 
-	// We will use an std::vector to store them
-	std::vector<brick> bricks;
+	// Instead of embedding every entity in the game class, use an entity_manager
+	entity_manager manager;
 
 	// Enum with allowd values for game state
 	enum class game_state { paused, running };
